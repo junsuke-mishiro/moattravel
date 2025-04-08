@@ -1,7 +1,7 @@
 package com.example.moattravel.service;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
@@ -48,7 +48,7 @@ public class HouseService {
 
 	// UUIDをつかって生成したファイル名を返す
 	public String generateNewFileName(String fileName) {
-		String[] fileNamese = fileName.split("\\.");
+		String[] fileNames = fileName.split("\\.");
 		for (int i = 0; i < fileNames.length - 1; i++) {
 			fileNames[i] = UUID.randomUUID().toString();
 		}
@@ -59,7 +59,7 @@ public class HouseService {
 	// 画像ファイルを指定したファイルにコピーする
 	public void copyImageFile(MultipartFile imageFile, Path filePath) {
 		try {
-			File.copy(imageFile.getInputStream(), filePath);
+			Files.copy(imageFile.getInputStream(), filePath);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
