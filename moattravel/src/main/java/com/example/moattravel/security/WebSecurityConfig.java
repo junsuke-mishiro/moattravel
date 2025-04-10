@@ -29,7 +29,7 @@ public class WebSecurityConfig {
 						.failureUrl("/login?error") //ログイン失敗時のリダイレクト先URL
 						.permitAll())
 				.logout((logout) -> logout
-						.logoutSuccessUrl("/?loggetOut") //ログアウト時のリダイレクト先URL
+						.logoutSuccessUrl("/?loggedOut") //ログアウト時のリダイレクト先URL
 						.permitAll());
 
 		return http.build();
