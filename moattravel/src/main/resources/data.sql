@@ -56,3 +56,6 @@ INSERT IGNORE INTO houses (id, name, image_name, description, price, capacity, p
 INSERT IGNORE INTO houses (id, name, image_name, description, price, capacity, postal_code, address, phone_number) VALUES (55, 'ゲストハウス サムライ', 'house05.jpg', '最寄り駅から徒歩10分。自然豊かで閑静な場所にあります。長期滞在も可能です。', 10000, 6, '042-0908', '北海道函館市銅山町X-XX-XX', '012-345-678');
 INSERT IGNORE INTO houses (id, name, image_name, description, price, capacity, postal_code, address, phone_number) VALUES (56, 'サムライ屋', 'house06.jpg', '最寄り駅から徒歩10分。自然豊かで閑静な場所にあります。長期滞在も可能です。', 6000, 2, '050-0061', '北海道室蘭市八丁平X-XX-XX', '012-345-678');
 INSERT IGNORE INTO houses (id, name, image_name, description, price, capacity, postal_code, address, phone_number) VALUES (57, '民宿 サムライ', 'house07.jpg', '最寄り駅から徒歩10分。自然豊かで閑静な場所にあります。長期滞在も可能です。', 7000, 3, '059-0027', '北海道登別市青葉町X-XX-XX', '012-345-678');
+-- rolesテーブル
+INSERT IGNORE INTO roles (id, name) VALUES (1, 'ROLE_GENERAL');
+INSERT IGNORE INTO roles (id, name) VALUES (2, 'ROLE_ADMIN');
