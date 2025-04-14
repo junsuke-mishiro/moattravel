@@ -37,12 +37,12 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th scope="co1">ID</th>
-									<th scope="co1">民宿名</th>
-									<th scope="co1">郵便番号</th>
-									<th scope="co1">住所</th>
-									<th scope="co1">電話番号</th>
-									<th scope="co1"></th>
+									<th scope="col">ID</th>
+									<th scope="col">民宿名</th>
+									<th scope="col">郵便番号</th>
+									<th scope="col">住所</th>
+									<th scope="col">電話番号</th>
+									<th scope="col"></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -82,14 +82,14 @@
 						</table>
 
 						<!-- ページネーション -->
-						<div th*if="${housePage.getTotalPages()>1}" class="d-flex jsutify-content-center">
+						<div th:if="${housePage.getTotalPages()>1}" class="d-flex justify-content-center">
 							<nav aria-label="民宿一覧ページ">
 								<ul class="pagination">
 									<li class="page-item">
 										<span th:if="${housePage.isFirst()}" class="page-link disabled">前</span>
 										<a＞ th:unless="${housePage.isFirst()}"
 											th:href="@{/admin/houses(page = ${housePage.getNumber() - 1}, keyword=${keyword})}"
-											class="page-link moattrave-page-link">前</a>
+											class="page-link moattravel-page-link">前</a>
 									</li>
 									<li th:each="i : ${#numbers.sequence(0, housePage.getTotalPages() - 1)}"
 										class="page-item">
