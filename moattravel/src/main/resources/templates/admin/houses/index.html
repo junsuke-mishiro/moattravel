@@ -62,7 +62,7 @@
 											<div class="modal-content">
 												<div class="modal-header">
 													<h5 class="modal-title"
-														th;id="${'deleteHouseModalLabel' + house.getId()}"
+														th:id="${'deleteHouseModalLabel' + house.getId()}"
 														th:text="${house.getName() + 'を削除してもよろしいですか？'}"></h5>
 													<button type="button" class="btn-close" data-bs-dismiss="modal"
 														aria-label="閉じる"></button>
@@ -87,7 +87,7 @@
 								<ul class="pagination">
 									<li class="page-item">
 										<span th:if="${housePage.isFirst()}" class="page-link disabled">前</span>
-										<a＞ th:unless="${housePage.isFirst()}"
+										<a th:unless="${housePage.isFirst()}"
 											th:href="@{/admin/houses(page = ${housePage.getNumber() - 1}, keyword=${keyword})}"
 											class="page-link moattravel-page-link">前</a>
 									</li>
