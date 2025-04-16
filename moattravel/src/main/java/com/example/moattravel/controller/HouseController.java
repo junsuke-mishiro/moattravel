@@ -7,6 +7,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,7 +34,6 @@ public class HouseController {
 		Page<House> housePage;
 
 		if (keyword != null && !keyword.isEmpty()) {
-			housePage = houseRepository.findByNameLikeOrAddressLike("%" + keyword + "%", "%" + keyword + "%", pageable);
 			if (order != null && order.equals("priceAsc")) {
 				housePage = houseRepository.findByNameLikeOrAddressLikeOrderByPriceAsc("%" + keyword + "%",
 						"%" + keyword + "%", pageable);
@@ -42,21 +42,18 @@ public class HouseController {
 						"%" + keyword + "%", pageable);
 			}
 		} else if (area != null && !area.isEmpty()) {
-			housePage = houseRepository.findByAddressLike("%" + area + "%", pageable);
 			if (order != null && order.equals("priceAsc")) {
 				housePage = houseRepository.findByAddressLikeOrderByPriceAsc("%" + area + "%", pageable);
 			} else {
 				housePage = houseRepository.findByAddressLikeOrderByCreatedAtDesc("%" + area + "%", pageable);
 			}
 		} else if (price != null) {
-			housePage = houseRepository.findByPriceLessThanEqual(price, pageable);
 			if (order != null && order.equals("priceAsc")) {
 				housePage = houseRepository.findByPriceLessThanEqualOrderByPriceAsc(price, pageable);
 			} else {
 				housePage = houseRepository.findByPriceLessThanEqualOrderByCreatedAtDesc(price, pageable);
 			}
 		} else {
-			housePage = houseRepository.findAll(pageable);
 			if (order != null && order.equals("priceAsc")) {
 				housePage = houseRepository.findAllByOrderByPriceAsc(pageable);
 			} else {
@@ -72,6 +69,14 @@ public class HouseController {
 
 		return "houses/index";
 	}
+
+	@GetMapping("/{id}")
+	public String show(@PathVariable(name = "id") Integer id, Model model) {
+		House house = houseRepository.getReferenceById(id);
+		model.addAttribute("house", house);
+		return "admin/houses/show";
+	}
+
 }
 
 /*@GetMapping("/{id}")
