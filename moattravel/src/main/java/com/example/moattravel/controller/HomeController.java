@@ -20,7 +20,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String index(Model model) {
 		List<House> newHouses = houseRepository.findTop10ByOrderByCreatedAtDesc();
-		model.addAttribute("newHouse", newHouses);
+		model.addAttribute("newHouses", newHouses);
 
 		return "index";
 	}
